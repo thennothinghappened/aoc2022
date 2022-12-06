@@ -1,5 +1,4 @@
 const fs = require('fs');
-const {start} = require('repl');
 
 const data = fs.readFileSync('../input', 'utf-8');
 const lines = data.split(/\r?\n/);
