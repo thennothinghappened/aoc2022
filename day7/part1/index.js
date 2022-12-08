@@ -10,10 +10,11 @@ function removeLeadingSlash(path) {
 }
 
 function getNestedValue(obj, key) {
-	
-	if (key.length === 0) return obj;
+	key = removeLeadingSlash(key);
+	if (key === '') return obj;
+	if (key.indexOf('/') === -1) return (obj[key] ?? undefined);
 
-	return key.reduce((result, k) => {
+	return key.split('/').reduce((result, k) => {
 		if (result === undefined) return undefined;
 		return result[k];
 	}, obj);
